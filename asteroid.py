@@ -1,0 +1,19 @@
+from circleshape import CircleShape
+import pygame
+
+from constants import LINE_WIDTH
+
+
+class Asteroid(CircleShape):
+    def __init__(self, x: float, y: float, radius: float) -> None:
+        super().__init__(x, y, radius)
+
+    def draw(self, screen: pygame.Surface):
+        color = "white"
+        radius = self.radius
+        width = LINE_WIDTH
+        center = self.position
+        pygame.draw.circle(screen, color, center, radius, width)
+
+    def update(self, dt: float) -> None:
+        self.position += self.velocity * dt
